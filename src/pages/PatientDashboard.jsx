@@ -183,6 +183,7 @@ export default function PatientDashboard() {
         <nav>
           <a className="nav-item active"><LayoutDashboard size={20} /> Dashboard</a>
           <a className="nav-item" onClick={() => setShowScanner(true)}><Scan size={20} /> AI Rx Scanner</a>
+          <a className="nav-item" onClick={() => navigate('/patient/book-doctor')}><Calendar size={20} /> Book Appointment</a>
           <a className="nav-item" onClick={() => navigate('/patient/nearby-medical')}><MapPin size={20} /> Nearby Medical</a>
           <a className="nav-item" onClick={() => navigate('/patient/help-centre')}><MessageSquare size={20} /> Help Centre</a>
           <a className="nav-item" onClick={() => navigate('/patient/reviews')}><MessageCircle size={20} /> Reviews & Feedback</a>

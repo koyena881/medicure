@@ -10,7 +10,8 @@ export default function Login() {
     e.preventDefault();
     if (role === 'patient') navigate('/patient');
     else if (role === 'doctor') navigate('/doctor');
-    else navigate('/admin');
+    else if (role === 'main-admin') navigate('/main-admin');
+    else navigate('/sub-admin');
   };
 
   return (
@@ -47,11 +48,18 @@ export default function Login() {
               <span>Doctor</span>
             </button>
             <button 
-              className={`role-btn ${role === 'admin' ? 'active' : ''}`} 
-              onClick={() => setRole('admin')}
+              className={`role-btn ${role === 'main-admin' ? 'active' : ''}`} 
+              onClick={() => setRole('main-admin')}
             >
               <Shield size={20} />
-              <span>Admin</span>
+              <span>Main Admin</span>
+            </button>
+            <button 
+              className={`role-btn ${role === 'sub-admin' ? 'active' : ''}`} 
+              onClick={() => setRole('sub-admin')}
+            >
+              <ShieldCheck size={20} />
+              <span>Sub Admin</span>
             </button>
           </div>
 

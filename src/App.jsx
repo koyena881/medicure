@@ -7,6 +7,7 @@ import NearbyMedical from './pages/NearbyMedical';
 import PatientReviews from './pages/PatientReviews';
 import DoctorDashboard from './pages/DoctorDashboard';
 import AdminDashboard from './pages/AdminDashboard';
+import DoctorBooking from './pages/DoctorBooking';
 import './index.css';
 
 function App() {
@@ -18,9 +19,11 @@ function App() {
         <Route path="/patient" element={<PatientDashboard />} />
         <Route path="/patient/help-centre" element={<HelpCentre />} />
         <Route path="/patient/nearby-medical" element={<NearbyMedical />} />
+        <Route path="/patient/book-doctor" element={<DoctorBooking />} />
         <Route path="/patient/reviews" element={<PatientReviews />} />
         <Route path="/doctor" element={<DoctorDashboard />} />
-        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/main-admin" element={<AdminDashboard role="main" />} />
+        <Route path="/sub-admin" element={<AdminDashboard role="sub" />} />
       </Routes>
     </BrowserRouter>
   );
