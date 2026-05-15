@@ -80,16 +80,20 @@ router.post('/approve-appointment', (req, res) => {
 });
 
 router.post('/sos', (req, res) => {
-  const { location, contacts } = req.body;
+  const { location, contacts = [] } = req.body;
   
   // In a production environment, you would use Twilio or AWS SNS here.
   console.log(`\n\n🚨🚨 [CRITICAL EMERGENCY] SOS TRIGGERED 🚨🚨`);
-  console.log(`📍 Location: LAT ${location.lat}, LNG ${location.lng}`);
-  console.log(`✉️ Dispatching emergency SMS to the following contacts:`);
+  console.log(`📍 Location: LAT ${location?.lat || 'Unknown'}, LNG ${location?.lng || 'Unknown'}`);
+  console.log(`✉️ Dispatching emergency SMS...`);
   
-  contacts.forEach(contact => {
-    console.log(`   -> Sending SMS to ${contact.name} at ${contact.phone}: "EMERGENCY: Patient requires immediate assistance. Live location attached."`);
-  });
+  if (contacts.length > 0) {
+    contacts.forEach(contact => {
+      console.log(`   -> Sending SMS to ${contact.name} at ${contact.phone}: "EMERGENCY: Patient requires immediate assistance. Live location attached."`);
+    });
+  } else {
+    console.log(`   (No emergency contacts found, alerting primary responders only)`);
+  }
   
   console.log(`🚑 Alerting City General Hospital dispatch...`);
   console.log(`✅ All emergency protocols successfully initiated.\n\n`);
